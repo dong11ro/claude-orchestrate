@@ -26,7 +26,8 @@ brief: <절대경로>/.orchestra/T<n>-brief.md
 2. brief의 소유 파일만 수정한다. 다른 파일이 필요하면 수정하지 말고 NEEDS_CONTEXT나 BLOCKED로 보고한다.
 3. 커밋 메시지는 한국어로 쓴다. push는 하지 않는다. 다른 브랜치나 main은 건드리지 않는다.
 4. <절대경로>/.orchestra/T<n>-report.md에 다음을 쓴다: 좌석 경로(pwd), 브랜치, 변경 요약, 검증 명령과 실제 출력, 우려점.
-5. 끝나면 SendMessage로 <control 이름>에게 회신한다. 첫 줄은 `[T<n>] DONE | DONE_WITH_CONCERNS | NEEDS_CONTEXT | BLOCKED`이고, 그 뒤 한두 줄 요약을 붙인다.
+5. 백그라운드 서브에이전트나 백그라운드 명령을 썼으면 모두 끝난 뒤에만 회신한다. 회신한 뒤에는 그 task로 더 작업하지 않는다.
+6. 끝나면 SendMessage로 <control 이름>에게 회신한다. 첫 줄은 `[T<n>] DONE | DONE_WITH_CONCERNS | NEEDS_CONTEXT | BLOCKED`이고, 그 뒤 한두 줄 요약을 붙인다.
 ```
 
 ## reviewer 리뷰 요청
@@ -41,6 +42,7 @@ diff: git diff main...orch/T<n>-<slug>   (저장소 루트에서)
 - 질문은 사용자가 아니라 control에게 보낸다. 판단할 수 없는 부분은 review에 "확인 불가"로 적는다.
 - 지적은 정확성과 brief 수용 기준에 영향을 주는 것만 한다. 스타일 취향은 Minor로 둔다.
 - 파일 수정, 커밋, checkout, switch는 하지 않는다. 읽기와 검증 명령 실행만 한다.
+- 백그라운드 서브에이전트나 백그라운드 명령을 썼으면 모두 끝난 뒤에만 회신한다.
 - 판정 두 가지: (a) brief 수용 기준을 충족하는가, (b) 버그·품질 문제가 있는가.
 - 지적은 Critical / Important / Minor로 나누고, 각 지적에 파일:줄과 이유를 단다.
 - <절대경로>/.orchestra/T<n>-review.md에 쓴다.
